@@ -14,6 +14,9 @@ export default class LabService {
   @Column({ name: 'title', type: 'text', nullable: false })
   title: string;
 
+  @Column({ name: 'bg_color', type: 'text', nullable: true })
+  bgColor: string;
+
   @Column({ name: 'order', type: 'int', nullable: false })
   order: number | 0;
 

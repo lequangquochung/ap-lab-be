@@ -6,6 +6,7 @@ import LabServiceDetail from '$entities/LabServiceDetail';
 export interface ICreateLabService {
     title: string,
     order: number,
+    bgColor: string,
     details: IcreateLabServiceDetail[]
 }
 
@@ -21,7 +22,8 @@ export async function createLabService(req: ICreateLabService) {
         const labServiceDetailRepo = transaction.getRepository(LabServiceDetail);
         const labService = await labServiceRepo.save({  
             title: req.title,
-            order: req.order
+            order: req.order,
+            bgColor: req.bgColor
         });
 
         if (req.details && req.details.length > 0) {
@@ -59,7 +61,7 @@ export async function getLabServiceAndDetail() {
     const labService = await labServiceRepo
         .createQueryBuilder('ls')
         .leftJoinAndSelect('ls.details', 'detail')
-        .select(['ls.title', 'detail.content'])
+        .select(['ls.title', 'detail.content', 'ls.bgColor'])
         .orderBy('detail.order', 'ASC')
         .orderBy('ls.order', 'ASC')
         .getMany();
@@ -107,6 +109,7 @@ export async function updateLabService(id: number, req: ICreateLabService) {
             id: id
             }, {
             title: req.title,
+            bgColor: req.bgColor,
             order: !req.order ? 0 : req.order
         });
     

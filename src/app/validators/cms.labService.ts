@@ -11,6 +11,9 @@ export const labServiceSchema: AjvSchema = {
         },
         details: {
             type: 'array'
+        },
+        bgColor: {
+            type: 'string'
         }
     },
   };
