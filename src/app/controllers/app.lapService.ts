@@ -6,7 +6,7 @@ import { NextFunction, Request, Response } from 'express';
 export default class LabServiceController {
     @Get('')
     async getList(req: Request, res: Response, next: NextFunction) {
-        return await service.getListLabService();
+        return await service.getListLabServiceApp();
     }
 
     @Get('/detail')

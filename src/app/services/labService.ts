@@ -80,6 +80,21 @@ export async function getListLabService() {
     return data;
 }
 
+export async function getListLabServiceApp() {
+    const labImageRepo = getRepository(LabService);
+
+    const data = await labImageRepo
+    .createQueryBuilder('ls')
+    .select(['ls.id', 'ls.title', 'ls.order'])
+    .orderBy('ls.order', 'ASC')
+    .getMany();
+
+    data.forEach((d) => {
+        d.title = d.title.replace(/ - /g, ' ');
+    });
+    return data;
+}
+
 export async function updateLabService(id: number, req: ICreateLabService) {
     return await getConnection().transaction(async (transaction: EntityManager) => {
         const labServiceRepo = transaction.getRepository(LabService);
