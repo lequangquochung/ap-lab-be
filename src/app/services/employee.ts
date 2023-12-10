@@ -52,10 +52,6 @@ export async function updateEmployee(id: number, req: ICreateEmployee) {
   const employee = await employeeRepo.findOne( {id: id} );
   if (!employee) throw ErrorCode.Employee_Not_Exist;
 
-  if (employee.avatar !== req.avatar) {
-    deleteFileByName(employee.avatar);
-  }
-
   await employeeRepo.update({
     id: id
   }, {
