@@ -58,10 +58,6 @@ export async function updateTopic(id: number, req: ICreateTopic) {
   const topic = await topicRepo.findOne( {id: id} );
   if (!topic) throw ErrorCode.Topic_Not_Exist;
 
-  if (topic.thumbnail !== req.thumbnail) {
-    deleteFileByName(topic.thumbnail);
-  }
-
   await topicRepo.update({
     id: id
   }, {
@@ -84,9 +80,6 @@ export async function deleteTopic(id: number) {
 
   const topic = await topicRepo.findOne( {id: id} );
   if (!topic) throw ErrorCode.Topic_Not_Exist;
-
-  deleteFileByName(topic.thumbnail);
-  
   await topicRepo.delete({
     id: id
   });
