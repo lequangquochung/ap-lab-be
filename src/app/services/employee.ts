@@ -74,8 +74,6 @@ export async function deleteEmployee(id: number) {
 
   const employee = await employeeRepo.findOne( {id: id} );
   if (!employee) throw ErrorCode.Employee_Not_Exist;
-  
-  deleteFileByName(employee.avatar);
 
   await employeeRepo.delete({
     id: id
