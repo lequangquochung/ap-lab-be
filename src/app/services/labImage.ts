@@ -51,10 +51,6 @@ export async function updateLabImage(id: number, req: ICreateLabImage) {
   const labImage = await labImageRepo.findOne({ id: id });
   if (!labImage) throw ErrorCode.Lab_Image_Not_Exist;
 
-  if (labImage.image !== req.image) {
-    deleteFileByName(labImage.image);
-  }
-
   await labImageRepo.update({
     id: id
   }, {
@@ -73,8 +69,6 @@ export async function deleteLabImage(id: number) {
 
   const labImage = await labImageRepo.findOne( {id: id} );
   if (!labImage) throw ErrorCode.Lab_Image_Not_Exist;
-
-  deleteFileByName(labImage.image);
   
   await labImageRepo.delete({
     id: id
