@@ -13,4 +13,9 @@ export default class LabServiceController {
     async getListAndDetail(req: Request, res: Response, next: NextFunction) {
         return await service.getLabServiceAndDetail();
     }
+
+    @Get('/:id')
+    async getDetail(req: Request, res: Response, next: NextFunction) {
+        return await service.getGyId(Number(req.params.id));
+    }
 }
