@@ -3,7 +3,6 @@ import Employee from '$entities/Employee';
 import { ErrorCode } from '$enums/index';
 import { PagingParams } from '$interfaces/common';
 import { returnPaging } from '$helpers/utils';
-import { deleteFileByName } from '$middlewares/common';
 
 export interface ICreateEmployee {
     fullName: string,

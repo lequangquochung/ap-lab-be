@@ -1,10 +1,8 @@
-import { getRepository, EntityManager, getConnection, Repository } from 'typeorm';
-import Employee from '$entities/Employee';
+import { getRepository } from 'typeorm';
 import { ErrorCode } from '$enums/index';
 import { PagingParams } from '$interfaces/common';
 import { returnPaging } from '$helpers/utils';
 import Topic from '$entities/Topic';
-import { deleteFileByName } from '$middlewares/common';
 
 export interface ICreateTopic {
     title: string,

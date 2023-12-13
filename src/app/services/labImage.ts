@@ -2,7 +2,6 @@ import { getRepository } from 'typeorm';
 import { ErrorCode } from '$enums/index';
 import { PagingParams } from '$interfaces/common';
 import { returnPaging } from '$helpers/utils';
-import { deleteFileByName } from '$middlewares/common';
 import LabImage from '$entities/LabImage';
 
 export interface ICreateLabImage {

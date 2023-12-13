@@ -83,12 +83,3 @@ export function checkPermission(permissions: ROLE[]) {
     next();
   };
 }
-
-export function deleteFileByName(fileName: string) {
-  const filePath = path.join('public', fileName);
-  if (fs.existsSync(filePath)) {
-    fs.unlinkSync(filePath);
-  } else {
-    throw ErrorCode.File_Not_Found;
-  }
-}
