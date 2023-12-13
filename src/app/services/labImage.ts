@@ -10,11 +10,19 @@ export interface ICreateLabImage {
   } 
 
 export async function addImage(req: ICreateLabImage) {
-    const image = await  getRepository(LabImage).save({
-        image: req.image,
-        order: req.order
+  const labImagheRepo = getRepository(LabImage);
+  const images = await labImagheRepo.find();
+  if (images && images.length > 0) {
+    images.forEach((e, index) => {
+      e.order = index + 1;
     });
-    return { id: image.id };
+    await labImagheRepo.save(images);
+  }
+  const image = await labImagheRepo.save({
+      image: req.image,
+      order: 0
+  });
+  return { id: image.id };
 }
 
 export async function getGyId(id : number) {
