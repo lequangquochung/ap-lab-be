@@ -87,7 +87,7 @@ export async function getListLabServiceApp() {
 
     const data = await labImageRepo
     .createQueryBuilder('ls')
-    .select(['ls.id', 'ls.title', 'ls.order'])
+    .select(['ls.id', 'ls.title', 'ls.order', 'ls.bgColor'])
     .orderBy('ls.order', 'ASC')
     .getMany();
 
