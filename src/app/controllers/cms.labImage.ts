@@ -14,6 +14,17 @@ export default class LabImageController {
         return await service.addImage(req.body);
     }
 
+    @Post('/dashboard/background')
+    async setDashboardBg(req: any) {
+        validate(labImageSchema, req.body);
+        return await service.setDashboardBg(req.body);
+    }
+
+    @Get('/dashboard/background')
+    async getDashboardBg() {
+        return await service.getDashboardBg();
+    }
+
     @Get('/:id')
     async getById(req: Request) {
         return await service.getGyId(Number(req.params.id));

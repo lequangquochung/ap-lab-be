@@ -17,7 +17,7 @@ export default class LogAction {
   @Column('varchar', { name: 'request_url', nullable: true })
   requestURL: string;
 
-  @Column('text', { name: 'request_params', nullable: true })
+  @Column('longtext', { name: 'request_params', nullable: true })
   requestParams: string;
 
   @Column('tinyint', { name: 'log_type', nullable: true })

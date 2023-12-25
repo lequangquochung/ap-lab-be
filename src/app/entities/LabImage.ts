@@ -1,3 +1,4 @@
+import { CommonStatus } from '$enums/index';
 import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 @Entity('lab_image')
 export default class LabImage {
@@ -15,4 +16,7 @@ export default class LabImage {
 
   @Column({ name: 'order', type: 'int', nullable: false })
   order: number | 0;
+
+  @Column({ name: 'is_dashboard_bg', type: 'tinyint', default: CommonStatus.INACTIVE })
+  isDashboardBg: number | 0;
 }

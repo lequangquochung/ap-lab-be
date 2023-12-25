@@ -10,4 +10,9 @@ export default class LabImageController {
         const params = assignPaging(req.query);
         return await service.getListLabImage(params);
     }
+
+    @Get('/dashboard/background')
+    async getDashboardBg() {
+        return await service.getDashboardBg();
+    }
 }

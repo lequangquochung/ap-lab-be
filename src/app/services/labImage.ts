@@ -1,5 +1,5 @@
-import { getRepository } from 'typeorm';
-import { ErrorCode } from '$enums/index';
+import { SimpleConsoleLogger, getRepository } from 'typeorm';
+import { CommonStatus, ErrorCode } from '$enums/index';
 import { PagingParams } from '$interfaces/common';
 import { returnPaging } from '$helpers/utils';
 import LabImage from '$entities/LabImage';
@@ -23,6 +23,35 @@ export async function addImage(req: ICreateLabImage) {
       order: 0
   });
   return { id: image.id };
+}
+
+export async function setDashboardBg(req: ICreateLabImage) {
+  const labImageRepo = getRepository(LabImage);
+  const bg = await labImageRepo.findOne({ isDashboardBg: 1 });
+  if (bg) {
+    await labImageRepo.update({id: bg.id}, {image: req.image})
+  } else {
+    await labImageRepo.save({
+      image: req.image,
+      isDashboardBg: 1,
+      order: 0,
+    })
+  }
+  return { image: req.image };
+}
+
+export async function getDashboardBg() {
+  console.log("teststststststw");
+  const bg = await getRepository(LabImage)
+    .createQueryBuilder('bg')
+    .where('bg.isDashboardBg = :isDashboardBg', { isDashboardBg: CommonStatus.ACTIVE })
+    .getOne();
+  if (!bg) {
+    throw ErrorCode.Lab_Image_Not_Exist;
+  }
+  return {
+    image: bg.image
+  }
 }
 
 export async function getGyId(id : number) {
