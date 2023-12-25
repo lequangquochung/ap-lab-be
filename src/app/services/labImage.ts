@@ -70,6 +70,7 @@ export async function getListLabImage(params: PagingParams) {
   const query = labImageRepo
     .createQueryBuilder('labImage')
     .select(['labImage.id', 'labImage.image', 'labImage.order'])
+    .where('labImage.isDashboardBg = :isDashboardBg', { isDashboardBg: CommonStatus.INACTIVE })
     .orderBy('labImage.order', 'ASC');
 
   const total = await query.getCount();
