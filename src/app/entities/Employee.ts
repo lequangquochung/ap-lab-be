@@ -21,4 +21,7 @@ export default class Employee {
 
   @UpdateDateColumn({ name: 'modified_date', type: 'datetime', nullable: true })
   modifiedDate: Date | null;
+
+  @Column({ name: 'order', type: 'int', nullable: true, default: 0 })
+  order: number;
 }
