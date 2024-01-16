@@ -39,7 +39,7 @@ export async function getListEmployee(params: PagingParams) {
   const data = await employeeRepo.find({
     skip: params.skip,
     take: params.take,
-    order: { id: 'DESC' },
+    order: { order: 'ASC' },
   });
   const total = await employeeRepo.count();
   return returnPaging(data, total, params);
