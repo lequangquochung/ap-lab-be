@@ -69,7 +69,7 @@ export async function updateEmployee(id: number, req: ICreateEmployee) {
     degree: req.degree,
     description: req.description,
     avatar: req.avatar,
-    order: req.order ? employee.odrer : req.order,
+    order: req.order ? employee.order : req.order,
   }
 }
 
