@@ -8,7 +8,8 @@ export interface ICreateEmployee {
     fullName: string,
     description: string,
     avatar: string,
-    degree: string
+    degree: string,
+    order: number
   } 
 
 export async function createEmployee(req: ICreateEmployee) {
@@ -17,7 +18,7 @@ export async function createEmployee(req: ICreateEmployee) {
       description: req.description,
       avatar: req.avatar,
       degree: req.degree,
-      order: 3,
+      order: req.order ? 3 : req.order,
     });
     return { id: emp.id };
 }
@@ -60,7 +61,7 @@ export async function updateEmployee(id: number, req: ICreateEmployee) {
     degree: req.degree,
     description: req.description,
     avatar: req.avatar,
-    order: employee.order,
+    order: req.order ? employee.orer : req.order,
   });
   return {
     id,
@@ -68,7 +69,7 @@ export async function updateEmployee(id: number, req: ICreateEmployee) {
     degree: req.degree,
     description: req.description,
     avatar: req.avatar,
-    order: employee.order,
+    order: req.order ? employee.orer : req.order,
   }
 }
 
