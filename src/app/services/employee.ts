@@ -16,7 +16,8 @@ export async function createEmployee(req: ICreateEmployee) {
       fullName: req.fullName,
       description: req.description,
       avatar: req.avatar,
-      degree: req.degree
+      degree: req.degree,
+      order: 3,
     });
     return { id: emp.id };
 }
@@ -29,7 +30,8 @@ export async function getGyId(id : number) {
     fullName: emp.fullName,
     avatar: emp.avatar,
     description: emp.description,
-    degree: emp.degree
+    degree: emp.degree,
+    order: emp.order,
   }
 }
 
@@ -57,14 +59,16 @@ export async function updateEmployee(id: number, req: ICreateEmployee) {
     fullName: req.fullName,
     degree: req.degree,
     description: req.description,
-    avatar: req.avatar
+    avatar: req.avatar,
+    order: employee.order,
   });
   return {
     id,
     fullName: req.fullName,
     degree: req.degree,
     description: req.description,
-    avatar: req.avatar
+    avatar: req.avatar,
+    order: employee.order,
   }
 }
 
