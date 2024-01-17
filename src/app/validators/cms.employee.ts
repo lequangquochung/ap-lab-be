@@ -18,5 +18,8 @@ export const createEmployeeSchema: AjvSchema = {
         type: 'string',
         maxLength: 255
       },
+      order: {
+        type: 'integer',
+      },
     },
   };
